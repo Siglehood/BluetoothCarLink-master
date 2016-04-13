@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -15,6 +14,27 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="加速(重力)传感：" />
+
+                <ToggleButton
+                    android:id="@+id/toggle"
+                    style="@style/MyToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textOff="@null"
+                    android:textOn="@null" />
+            </LinearLayout>
 
             <com.gec.bluetoothcarlink.widget.Rudder
                 android:id="@+id/rudder"
@@ -34,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/ellipsis"
-                android:textColor="@android:color/holo_red_light"
                 android:textSize="25sp" />
         </RelativeLayout>
 
@@ -46,7 +65,7 @@
                 android:id="@+id/wheel_view"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/wheel"
                 android:contentDescription="@null"
@@ -58,7 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="@string/copyright"
-        android:textColor="@android:color/white" />
+        android:text="@string/copyright" />
 
 </LinearLayout>

@@ -17,20 +17,23 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
+/**
+ * 自定义方向盘类
+ */
 public class Rudder extends SurfaceView implements Runnable, Callback {
 	private Direction mDirection = Direction.DEFAULT;
 
 	// 摇杆事件
 	public static final int ACTION_RUDDER = 0x01;
 	// 按钮事件（未实现）
-	public static final int ACTION_ATTACK = 0x02;
+	public static final int ACTION_STOPPED = 0x02;
 
 	private SurfaceHolder mHolder = null;
 	private Thread mThread = null;
 	private Paint mPaint = null;
 
-	private int wheelColor = Color.rgb(72, 118, 255);
-	private int rockerColor = Color.rgb(0, 205, 0);
+	private int wheelColor = Color.rgb(220, 220, 209);
+	private int rockerColor = Color.rgb(0, 153, 0);
 
 	// 摇杆起始位置
 	private Point mCtrlPoint = new Point(260, 260);
@@ -42,7 +45,7 @@ public class Rudder extends SurfaceView implements Runnable, Callback {
 	// 摇杆活动范围半径
 	private int mRangeRadius = 220;
 	// 摇杆半径
-	private int mRudderRadius = 30;
+	private int mRudderRadius = 50;
 
 	// 事件回调接口
 	private RudderListener mListener = null;
@@ -142,6 +145,7 @@ public class Rudder extends SurfaceView implements Runnable, Callback {
 	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
+
 		int len = MathUtil.getLength(mCtrlPoint.x, mCtrlPoint.y, event.getX(), event.getY());
 
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -173,6 +177,7 @@ public class Rudder extends SurfaceView implements Runnable, Callback {
 		if (event.getAction() == MotionEvent.ACTION_UP) {
 			if (mListener != null) {
 				mListener.onAnimated(false);
+				mListener.onSteeringWheelChanged(ACTION_STOPPED, Direction.DEFAULT);
 			}
 			mRockerPosition.set(mCtrlPoint.x, mCtrlPoint.y);
 		}
@@ -222,10 +227,14 @@ public class Rudder extends SurfaceView implements Runnable, Callback {
 		}
 	}
 
+	/**
+	 * 初始化
+	 */
 	private void init() {
 		setKeepScreenOn(true);
 
 		mHolder = getHolder();
+		// 设置回调
 		mHolder.addCallback(this);
 
 		mThread = new Thread(this);
@@ -235,6 +244,7 @@ public class Rudder extends SurfaceView implements Runnable, Callback {
 		// 抗锯齿
 		mPaint.setAntiAlias(true);
 
+		// 设置聚焦
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 		setZOrderOnTop(true);

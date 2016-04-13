@@ -3,6 +3,9 @@ package com.gec.bluetoothcarlink.util;
 import android.content.Context;
 import android.widget.Toast;
 
+/**
+ * 消息弹框工具类
+ */
 public class Toaster {
 
 	public static void longToastShow(Context context, String text) {

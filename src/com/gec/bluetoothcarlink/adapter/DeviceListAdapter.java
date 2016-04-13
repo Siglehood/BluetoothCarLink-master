@@ -14,16 +14,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**
+ * 自定义适配器类
+ */
 public class DeviceListAdapter extends BaseAdapter {
 	private List<BluetoothDevice> mDevices = null;
 	private LayoutInflater mLayoutInflater = null;
 
 	public DeviceListAdapter(Context context) {
 		mDevices = new ArrayList<BluetoothDevice>();
+		// 获取系统布局映射服务
 		mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
+	/**
+	 * 将蓝牙设备添加到列表中
+	 * 
+	 * @param device
+	 */
 	public void addDevice(BluetoothDevice device) {
+		// 去重
 		if (!mDevices.contains(device)) {
 			mDevices.add(device);
 		}
@@ -31,10 +41,6 @@ public class DeviceListAdapter extends BaseAdapter {
 
 	public BluetoothDevice getDevice(int position) {
 		return mDevices.get(position);
-	}
-
-	public void clear() {
-		mDevices.clear();
 	}
 
 	@Override
@@ -77,6 +83,9 @@ public class DeviceListAdapter extends BaseAdapter {
 		return view;
 	}
 
+	/**
+	 * ViewHolder提高加载性能
+	 */
 	private static class ViewHolder {
 		private TextView deviceName = null;
 		private TextView deviceAddress = null;

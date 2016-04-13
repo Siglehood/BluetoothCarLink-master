@@ -41,7 +41,7 @@ public class WhorlView extends View {
 	private float mStrokeWidth;
 
 	public WhorlView(Context context) {
-		this(context, null, 0);
+		this(context, null);
 	}
 
 	public WhorlView(Context context, AttributeSet attrs) {
@@ -50,6 +50,7 @@ public class WhorlView extends View {
 
 	public WhorlView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+
 		// 默认外层最慢270度/s
 		final int defaultCircleSpeed = 270;
 		final float defaultSweepAngle = 90f;
@@ -231,7 +232,7 @@ public class WhorlView extends View {
 	 */
 	private void calculateIntervalWidth(int size) {
 		float wantIntervalWidth = (size / (mLayerColors.length * 2)) - mStrokeWidth;
-		// 防止间隔太大，最大为弧宽的3倍
+		// 防止间隔太大，最大为弧宽的4倍
 		float maxIntervalWidth = mStrokeWidth * 4;
 		mIntervalWidth = Math.min(wantIntervalWidth, maxIntervalWidth);
 	}

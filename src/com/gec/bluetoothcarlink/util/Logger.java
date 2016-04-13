@@ -2,7 +2,11 @@ package com.gec.bluetoothcarlink.util;
 
 import android.util.Log;
 
+/**
+ * 日志打印工具类
+ */
 public class Logger {
+	// 全局Log开关
 	private static final boolean DEBUG = false;
 
 	public static void v(String tag, String msg) {

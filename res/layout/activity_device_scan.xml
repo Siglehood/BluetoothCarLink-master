@@ -14,14 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        
         <com.gec.bluetoothcarlink.widget.WhorlView
             android:id="@+id/whorl_view"
             android:layout_width="1dp"
             android:layout_height="1dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="12dp"
-            app:whorlview_circle_colors="#F14336_#1CAF50_#5677fc_#F44336_#4CAF50"
+            app:whorlview_circle_colors="#F44336_#4CAF50_#5677fc_#F44336_#4CAF50_#5677fc"
             app:whorlview_circle_speed="270"
             app:whorlview_parallax="fast"
             app:whorlview_strokeWidth="6"

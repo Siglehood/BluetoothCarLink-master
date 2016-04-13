@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BluetoothCarLink</string>
+    <string name="app_name">小车遥控</string>
     <string name="ellipsis">......</string>
     <string name="copyright">Copyright© 2005&#8211;2016 GEC.All Rights Reserved.</string>
 

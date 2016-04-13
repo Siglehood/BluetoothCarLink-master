@@ -2,6 +2,9 @@ package com.gec.bluetoothcarlink.util;
 
 import android.graphics.Point;
 
+/**
+ * 数学运算工具类
+ */
 public class MathUtil {
 	/**
 	 * 获取两点间直线距离(勾股定理)
